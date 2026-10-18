@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 import requests
 from bs4 import BeautifulSoup
 
-URL = os.environ.get("MONITOR_URL", "https://ursus1404.github.io/ravenna-ticket-monitor/")
+URL = os.environ.get("https://ursus1404.github.io/ravenna-ticket-monitor/")
 STATE_FILE = os.path.join(os.path.dirname(__file__), "state.json")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "")
 
