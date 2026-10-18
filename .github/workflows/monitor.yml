@@ -24,6 +24,7 @@ jobs:
       - name: Check tickets
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          MONITOR_URL: ${{ vars.MONITOR_URL }}   # leave empty → uses real Ravenna URL
         run: python check_tickets.py
 
       - name: Commit updated state

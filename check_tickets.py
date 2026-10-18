@@ -15,9 +15,8 @@ warnings.filterwarnings("ignore")
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://weihnachtsmarkt-ravennaschlucht.reservix.de"
+URL = os.environ.get("MONITOR_URL", "https://weihnachtsmarkt-ravennaschlucht.reservix.de")
 STATE_FILE = os.path.join(os.path.dirname(__file__), "state.json")
-# Read from env (GitHub Actions secret) or fall back to hardcoded value for local use
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "")
 
 HEADERS = {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Weihnachtsmarkt Ravennaschlucht – TEST</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #f3f3f3; }
+    .banner { background: #a21311; color: white; padding: 8px 16px; font-size: 13px; }
+    h1 { text-align: center; color: #a21311; padding: 24px 0 8px; }
+    .grid { display: flex; flex-wrap: wrap; gap: 16px; padding: 24px; justify-content: center; }
+    .tile { width: 200px; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.15); background: #fff; }
+    .tile img { width: 100%; height: 120px; object-fit: cover; display: block; }
+    .tile-text { background: rgba(0,0,0,.55); padding: 12px; }
+    .c-title-on-image-link-text-tile__headline {
+      margin: 0; font-size: 14px; font-weight: bold; color: white;
+    }
+    .sold-out .tile-text { background: rgba(162,19,17,.7); }
+    .available .tile-text { background: rgba(40,120,40,.8); }
+  </style>
+</head>
+<body>
+
+<div class="banner">⚠️ TEST-Seite — kein echtes Ticketshop</div>
+<h1>Weihnachtsmarkt in der Ravennaschlucht</h1>
+
+<!-- ============================================================
+     TEST-ANLEITUNG:
+     Um eine Benachrichtigung auszulösen, ändere ein Tile von
+       class="tile sold-out"
+     auf
+       class="tile available"
+     und ändere den Headline-Text von "AUSVERKAUFT" auf z.B. den
+     Terminnamen ("Titisee – Sa 30.11."). Dann committen → fertig.
+     ============================================================ -->
+
+<div class="grid">
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Titisee" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Hinterzarten" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Himmelreich" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Freiburg" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Wander-Ticket" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Laternenwanderung" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT – Sagenhafte Laternenwanderung</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Stubede" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT – Stubede</h2>
+    </div>
+  </div>
+
+  <div class="tile sold-out">
+    <img src="https://placehold.co/200x120/8B0000/white?text=Anreise+Auto" alt="">
+    <div class="tile-text">
+      <h2 class="c-title-on-image-link-text-tile__headline">AUSVERKAUFT</h2>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
