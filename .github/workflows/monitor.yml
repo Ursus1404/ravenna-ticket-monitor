@@ -3,10 +3,15 @@ name: Ticket Monitor
 on:
   schedule:
     - cron: '*/5 * * * *'
-  workflow_dispatch:          # allow manual trigger
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'check_tickets.py'
+      - '.github/workflows/monitor.yml'
 
 permissions:
-  contents: write             # needed to commit state.json back
+  contents: write
 
 jobs:
   check:
@@ -22,8 +27,6 @@ jobs:
         run: pip install requests beautifulsoup4 --quiet
 
       - name: Check tickets
-        env:
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python check_tickets.py
 
       - name: Commit updated state

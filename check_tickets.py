@@ -6,7 +6,7 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 
-URL = os.environ.get("MONITOR_URL", "https://ursus1404.github.io/ravenna-ticket-monitor/")
+URL = "https://weihnachtsmarkt-ravennaschlucht.reservix.de"
 STATE_FILE = os.path.join(os.path.dirname(__file__), "state.json")
 NTFY_TOPIC = "ravenna-ticket-monitor"
 
