@@ -1,21 +1,12 @@
 #!/usr/bin/env python3
-"""
-Ravenna Christmas Market ticket availability monitor.
-Checks for tickets and sends ntfy.sh push notifications.
-"""
-
 import json
 import os
-import subprocess
 import sys
-import warnings
-
-warnings.filterwarnings("ignore")
 
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://ursus1404.github.io/ravenna-ticket-monitor/"
+URL = os.environ.get("MONITOR_URL", "https://ursus1404.github.io/ravenna-ticket-monitor/")
 STATE_FILE = os.path.join(os.path.dirname(__file__), "state.json")
 NTFY_TOPIC = "ravenna-ticket-monitor"
 
@@ -29,7 +20,6 @@ HEADERS = {
 
 
 def fetch_tiles() -> list[str]:
-    """Fetch the page and return all tile headline texts."""
     resp = requests.get(URL, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -49,18 +39,7 @@ def save_state(state: dict) -> None:
         json.dump(state, f, indent=2, ensure_ascii=False)
 
 
-def notify_macos(title: str, message: str) -> None:
-    script = (
-        f'display notification "{message}" '
-        f'with title "{title}" '
-        f'sound name "Glass"'
-    )
-    subprocess.run(["osascript", "-e", script], check=False)
-
-
 def notify_ntfy(title: str, message: str) -> None:
-    if not NTFY_TOPIC:
-        return
     try:
         requests.post(
             f"https://ntfy.sh/{NTFY_TOPIC}",
@@ -68,7 +47,7 @@ def notify_ntfy(title: str, message: str) -> None:
             headers={
                 "Title": title,
                 "Priority": "urgent",
-                "Tags": "ticket,christmas_tree",
+                "Tags": "christmas_tree,ticket",
                 "Click": URL,
             },
             timeout=10,
@@ -95,16 +74,13 @@ def main() -> None:
         print(f"Available: {available}")
 
     if len(sold_out) < prev_sold_out_count or available:
-        # Something became available since last check
         if available:
             msg = "Verfügbar: " + ", ".join(available)
         else:
             msg = f"Weniger ausverkaufte Termine ({len(sold_out)} statt {prev_sold_out_count}) — jetzt schnell sein!"
 
         print(f"NOTIFICATION: {msg}")
-        if sys.platform == "darwin":
-            notify_macos("🎄 Ravenna-Tickets verfügbar!", msg)
-        notify_ntfy("🎄 Ravenna-Tickets verfügbar!", msg)
+        notify_ntfy("Ravenna-Tickets verfügbar!", msg)
     else:
         print("Keine Änderung — alles noch ausverkauft.")
 
