@@ -1,8 +1,5 @@
 {
-  "sold_out_count": 2,
-  "sold_out": [
-    "AUSVERKAUFT - Sagenhafte Laternenwanderung",
-    "AUSVERKAUFT - Stubede"
-  ],
+  "sold_out_count": 0,
+  "sold_out": [],
   "available": []
 }
